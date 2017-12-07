@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS quizes_questions;
 DROP TABLE IF EXISTS quizes;
 DROP TABLE IF EXISTS answers;
 DROP TABLE IF EXISTS questions;
@@ -46,6 +47,13 @@ CREATE TABLE answers (
   answer_type text NOT NULL,
 	FOREIGN KEY (question_id) REFERENCES questions(id),
 	FOREIGN KEY (answer_type) REFERENCES answer_types(type_name)
+);
+
+CREATE TABLE quizes_questions (
+  	quiz_id BIGINT,
+	question_id BIGINT,
+	FOREIGN KEY (quiz_id) REFERENCES quizes(id),
+	FOREIGN KEY (question_id) REFERENCES questions(id)
 );
 
 

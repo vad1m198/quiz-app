@@ -12,6 +12,9 @@ INSERT INTO quizes (quiz_name,author,quiz_type)
 
 INSERT INTO questions (question_string,author,question_type )
 	VALUES ('Which two statements are correct about External ID?','admin','clean');
+	
+	INSERT INTO quizes_questions (quiz_id,question_id)
+	VALUES ('1','1');
 
 INSERT INTO answers (answer_string,is_correct,question_id,answer_type)
 	VALUES ('External IDs must be Text fields','false','1','clean'),('External IDs are always searchable','true','1','clean'),
