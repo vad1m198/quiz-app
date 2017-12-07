@@ -54,3 +54,6 @@ ALTER TABLE question_types
   
 ALTER TABLE quiz_types
 	ADD CONSTRAINT type_name CHECK (type_name IN ('draft','clean'));
+	
+ALTER TABLE answer_types
+	ADD CONSTRAINT type_name CHECK (type_name IN ('draft','clean'));
