@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+
+</head>
+<body>
+Hello and Welcome to our Web Application
+<ul>
+	<li th:each="question : ${questions}">
+		<span th:text="${question.toString()}"></span>
+		<ul>
+			<li th:each="answer : ${question.answers}">
+				<span th:text="${answer.toString()}"></span>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+<!-- <ul th:each="question : ${questions}">
+        <li th:text="${question.id}"></li>
+        <li><a href="#" th:text="${question.author}"></a></li>
+        <li th:text="${#dates.format(new java.util.Date(question.createdDate))}"></li>
+    </ul>  -->
+</body>
+</html>
