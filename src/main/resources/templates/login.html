@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <title>Quiz App</title>	
+	</head>
+	<body>
+		<form action="#" th:action="@{/login}" th:object="${user}" method="post">
+			<span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName Error</span>
+	    	<p>User name: <input type="text" th:field="*{userName}" /></p>
+	        <input type="submit" value="Submit" />
+	    </form>
+	</body>
+</html>
