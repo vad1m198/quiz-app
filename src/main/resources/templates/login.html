@@ -2,11 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 	    <title>Quiz App</title>	
+	    <style>
+			.field-error {
+				color:red;
+			}
+		</style>
 	</head>
 	<body>
 		<form action="#" th:action="@{/login}" th:object="${user}" method="post">
-			<span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName Error</span>
-	    	<p>User name: <input type="text" th:field="*{userName}" /></p>
+			<div>
+		    	<p>User name: <input type="text" th:field="*{userName}" /></p>	        
+		        <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="field-error">userName Error</span>
+		     </div>
 	        <input type="submit" value="Submit" />
 	    </form>
 	</body>

@@ -25,6 +25,22 @@ public class Answer implements Serializable {
 	@Column(name = "question_id")
 	private Long questionId;
 	
+	public Boolean getIsCorrect() {
+		return isCorrect;
+	}
+		
+	public long getId() {
+		return id;
+	}
+
+	public String getAnswerString() {
+		return answerString;
+	}
+
+	public Long getQuestionId() {
+		return questionId;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("Answer[id=%d, text='%s', isCorrect='%s']", id, answerString, isCorrect);		

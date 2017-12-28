@@ -41,6 +41,14 @@ public class Question implements Serializable {
 	public List<Answer> getAnswers() {
 		return answers;
 	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public String getQuestionString() {
+		return questionString;
+	}
 
 	@Override
 	public String toString() {
