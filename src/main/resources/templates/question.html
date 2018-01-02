@@ -6,12 +6,14 @@
 	<body>
 		<h2 th:text="'Hello '+ ${user.userName}"></h2>
 		<form action="#" th:action="@{/question/} + ${questionForm.questionId}" th:object="${questionForm}" method="post">
-			<span th:text="${questionForm.questionString}"></span>
+			<span th:text="${questionForm.questionString}"></span><br/>
+			<span th:text="'Please select ' + ${questionForm.correctAnswersNum} + ' answers'"></span>
 			<div th:each="option: *{options}">
 				<input type="checkbox" th:field="*{selectedOptions}" th:value="${option.answerId}" />
 	    		<label th:for="${#ids.prev('selectedOptions')}" th:text="${option.answerString}"></label>
-			</div>
+			</div>			
 			<input type="submit" value="Submit" />
+			
 		</form>
 	</body>
 </html>

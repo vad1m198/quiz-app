@@ -15,7 +15,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(userDataInterceptor).addPathPatterns("/question/**");
+		registry.addInterceptor(userDataInterceptor).addPathPatterns("/question/**").addPathPatterns("/results/**");
 	}
 
 }

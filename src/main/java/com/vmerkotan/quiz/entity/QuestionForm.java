@@ -9,6 +9,14 @@ public class QuestionForm {
 	private List<AnswerForm> options;
 	private String selectedOption;
 	private String[] selectedOptions;
+	private int correctAnswersNum;
+	
+	public int getCorrectAnswersNum() {
+		return correctAnswersNum;
+	}
+	public void setCorrectAnswersNum(int correctAnswersNum) {
+		this.correctAnswersNum = correctAnswersNum;
+	}
 	public long getQuestionId() {
 		return questionId;
 	}
@@ -42,10 +50,10 @@ public class QuestionForm {
 	
 	@Override
 	public String toString() {
-		String selectedOptions = "";
-		if(selectedOptions != null) selectedOptions = String.join(",", selectedOptions);
+		String selectedOptionsStr = "";		
+		if(selectedOptions != null) selectedOptionsStr = String.join(",", selectedOptions);
 		return String.format("Question[id=%d, text='%s', selectedOptions='%s']", 
-				questionId, questionString, selectedOptions);		
+				questionId, questionString, selectedOptionsStr);		
 	}
 	
 	
