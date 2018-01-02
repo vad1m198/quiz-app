@@ -51,17 +51,15 @@ public class MainController {
 			Long id = q.getQuestionId();
 			List<String> selectedAnswers = Arrays.asList(q.getSelectedOptions());
 			Question question = questionsService.findById(id);
-			int correctAnswers = 0;
+			int correctAnswers = q.getCorrectAnswersNum();
 			int selectedCorrectAnswers = 0;
+			if(selectedAnswers.size() != correctAnswers) continue;
 			for(Answer a: question.getAnswers()) {
-				if(a.getIsCorrect()) {
-					correctAnswers++;
-					if(selectedAnswers.contains(String.valueOf(a.getId()))) {
-						selectedCorrectAnswers++;
-					}
+				if(a.getIsCorrect() && selectedAnswers.contains(String.valueOf(a.getId()))) {
+					selectedCorrectAnswers++;
 				}					
 			}
-			if(correctAnswers > 0 && correctAnswers == selectedCorrectAnswers) {
+			if(correctAnswers == selectedCorrectAnswers) {
 				correctAnswersCount++;
 			}
 			
@@ -94,7 +92,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/question/{questionId}", method = RequestMethod.POST)
-	public String questionPost(QuestionForm questionForm) {
+	public String questionPost(QuestionForm questionForm) {		
 		quizService.addQuestionForm(questionForm);
 		Long nextId = questionsService.getNextQuestionId();
 		if(nextId != null) {
