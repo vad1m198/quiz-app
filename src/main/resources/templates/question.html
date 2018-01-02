@@ -12,7 +12,6 @@
 				<input type="checkbox" th:field="*{selectedOptions}" th:value="${option.answerId}" />
 	    		<label th:for="${#ids.prev('selectedOptions')}" th:text="${option.answerString}"></label>
 			</div>
-			<input type="hidden" th:field="*{correctAnswersNum}" th:value="*{correctAnswersNum}" />
 			<input type="submit" value="Submit" />
 			
 		</form>

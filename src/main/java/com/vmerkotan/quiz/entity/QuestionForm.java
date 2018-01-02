@@ -9,12 +9,12 @@ public class QuestionForm {
 	private List<AnswerForm> options;
 	private String selectedOption;
 	private String[] selectedOptions;
-	private int correctAnswersNum;
+	private long correctAnswersNum;
 	
-	public int getCorrectAnswersNum() {
+	public long getCorrectAnswersNum() {
 		return correctAnswersNum;
 	}
-	public void setCorrectAnswersNum(int correctAnswersNum) {
+	public void setCorrectAnswersNum(long correctAnswersNum) {
 		this.correctAnswersNum = correctAnswersNum;
 	}
 	public long getQuestionId() {

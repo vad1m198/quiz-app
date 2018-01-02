@@ -51,7 +51,7 @@ public class MainController {
 			Long id = q.getQuestionId();
 			List<String> selectedAnswers = Arrays.asList(q.getSelectedOptions());
 			Question question = questionsService.findById(id);
-			int correctAnswers = q.getCorrectAnswersNum();
+			int correctAnswers = (int)q.getCorrectAnswersNum();
 			int selectedCorrectAnswers = 0;
 			if(selectedAnswers.size() != correctAnswers) continue;
 			for(Answer a: question.getAnswers()) {
@@ -92,7 +92,10 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/question/{questionId}", method = RequestMethod.POST)
-	public String questionPost(QuestionForm questionForm) {		
+	public String questionPost(QuestionForm questionForm, @PathVariable long questionId) {
+		Question q = questionsService.findById(questionId);
+		long correctAnswersCount = q.getAnswers().stream().filter(answer -> answer.getIsCorrect()).count();		
+		questionForm.setCorrectAnswersNum(correctAnswersCount);
 		quizService.addQuestionForm(questionForm);
 		Long nextId = questionsService.getNextQuestionId();
 		if(nextId != null) {
