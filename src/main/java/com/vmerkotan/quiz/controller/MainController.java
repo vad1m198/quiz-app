@@ -117,6 +117,11 @@ public class MainController {
 		if(bindingResult.hasErrors()) {
 			return "login";
 		}
-		return "redirect:/question/" + questionsService.getNextQuestionId();
+		Long nextId = questionsService.getNextQuestionId();
+		if(nextId != null) {
+			return "redirect:/question/" + nextId;
+		} else {
+			return "redirect:/results";
+		}
 	}
 }
